@@ -51,7 +51,7 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.View
         public ViewHolder(View view) {
             super(view);
             nameView = view.findViewById(R.id.name);
-            cabinetView = view.findViewById(R.id.cabinet);
+            cabinetView = view.findViewById(R.id.number);
             idView = view.findViewById(R.id.id);
 
         }

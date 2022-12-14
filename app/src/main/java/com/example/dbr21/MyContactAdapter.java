@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +22,7 @@ public class MyContactAdapter extends ArrayAdapter<MyContactAdapter> {
     public MyContactAdapter(@NonNull Context context, int resource, List<MyContact> contacts) {
         super(context, resource);
         this.contacts = contacts;
-        this.layout =resource;
+        this.layout = resource;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -30,6 +31,21 @@ public class MyContactAdapter extends ArrayAdapter<MyContactAdapter> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = inflater.inflate(layout,parent);
         MyContact myContact = contacts.get(position);
-        view.findViewById(text).setText(myContact.name/*проверка на нул*/);
+
+        TextView nameView = convertView.findViewById(R.id.name);
+        TextView idView = convertView.findViewById(R.id.id);
+        TextView numberView = convertView.findViewById(R.id.number);
+
+        nameView.setText(myContact.name);
+        idView.setText(myContact.id);
+        numberView.setText(myContact.number);
+
+        return convertView;
+
+        //view.findViewById(R.id.name).setText(myContact.name/*проверка на нул*/);
+        //view.setText
     }
+
+
+
 }

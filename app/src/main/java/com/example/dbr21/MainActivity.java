@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
             recyclerView.setAdapter(adapter); //установка адаптера
         }*/
+
         //////////////////////////////////////////////////
         //////////////////////////////////////////////////
 
@@ -101,6 +102,21 @@ public class MainActivity extends AppCompatActivity {
 
             //ListView contactList = findViewById(R.id.contactList);
             ListView contactList = findViewById(R.id.contactList);
+
+            ////////////////////////////////
+            /*ContentResolver contentResolver = getContentResolver();
+            Cursor cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+            while (cursor.moveToNext()) {
+
+                int i = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY);
+                int e = cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER);
+
+                String contact = cursor.getString(i);
+                if (contact==null){
+                    continue;
+                }
+            }*/
+            ////////////////////////////////////////
 
             contactList.setAdapter(adapter);
         }

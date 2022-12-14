@@ -3,6 +3,7 @@ package MView;
 import android.app.Application;
 import android.content.ContentResolver;
 import android.database.Cursor;
+import android.net.Uri;
 import android.provider.ContactsContract;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -40,11 +41,20 @@ public class MViewModel extends AndroidViewModel {
 
         if(cursor!=null){
             while (cursor.moveToNext()) {
+                int l =0;
 
                 int i = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY);
                 int e = cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER);
+                Uri urii = cursor.getNotificationUri();
+                int h = cursor.getPosition();
                 System.out.println("cursor.getColumnCount();\t" + cursor.getColumnCount());
                 String n = cursor.getString(e);
+
+                //Uri uri = Uri.parse (ContactsContract.Contacts.CONTENT_LOOKUP_URI + "/" + h);
+                //System.out.println(db.timetableClassDao().getById(l));
+                //System.out.println(db.timetableClassDao().getById(56));
+
+                //System.out.println("urii" + uri);
 
 
                 String contact = cursor.getString(i);
@@ -56,6 +66,7 @@ public class MViewModel extends AndroidViewModel {
                 }
                 contacts.add(contact);
 
+                l++;
             }
             cursor.close();
         }
